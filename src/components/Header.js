@@ -1,8 +1,7 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 
 const Header = () => (
-	<header>
+  <header>
     <nav>
       <ul className="links">
         <li>Home</li>
@@ -10,7 +9,7 @@ const Header = () => (
         <li>Bookings</li>
       </ul>
     </nav>
-	</header>
-	);
+  </header>
+);
 
 export default Header;
