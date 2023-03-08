@@ -12,20 +12,25 @@ const Booking = () => (
             <form>
               <div className="form-group">
                 <label htmlFor="nameInput" className="form-label">
-                  Name
-                  <input type="text" className="form-control" id="nameInput" />
+                  Select a Car
+                  <select className="form-control" id="nameInput">
+                    <option selected>Choose...</option>
+                    <option>Car1</option>
+                    <option>Car2</option>
+                    <option>Car3</option>
+                  </select>
                 </label>
               </div>
               <div className="form-group">
                 <label htmlFor="pickInput" className="form-label">
                   Pickup_Date
-                  <input type="text" className="form-control" id="pickInput" />
+                  <input type="date" className="form-control" id="pickInput" />
                 </label>
               </div>
               <div className="form-group">
                 <label htmlFor="returnInput" className="form-label">
                   Return_Date
-                  <input type="text" className="form-control" id="returnInput" />
+                  <input type="date" className="form-control" id="returnInput" />
                 </label>
               </div>
               <button type="submit" className="btn btn-primary">Book A Car</button>
