@@ -1,7 +1,11 @@
 import React from 'react';
+import Header from '../components/Header';
 
 const Booking = () => (
-  <div>Booking</div>
+  <>
+    <Header />
+    <div>Booking</div>
+  </>
 );
 
 export default Booking;

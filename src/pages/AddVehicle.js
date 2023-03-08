@@ -1,7 +1,11 @@
 import React from 'react';
+import Header from '../components/Header';
 
 const AddVehicle = () => (
-  <div>AddVehicle</div>
+  <>
+    <Header />
+    <div>AddVehicle</div>
+  </>
 );
 
 export default AddVehicle;

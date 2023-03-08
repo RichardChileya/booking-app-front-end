@@ -1,7 +1,11 @@
 import React from 'react';
+import Header from './Header';
 
 const Vehicles = () => (
-  <h1>Vehicles</h1>
+  <>
+    <Header />
+    <h1>Vehicles</h1>
+  </>
 );
 
 export default Vehicles;
