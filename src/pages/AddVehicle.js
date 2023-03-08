@@ -6,7 +6,7 @@ const AddVehicle = () => (
       <div className="col-md-6">
         <div className="card">
           <div className="card-header">
-            Register
+            Add a Vehicle
           </div>
           <div className="card-body">
             <form>
@@ -31,19 +31,23 @@ const AddVehicle = () => (
               <div className="form-group">
                 <label htmlFor="priceInput" className="form-label">
                   Daily Price
-                  <input type="text" className="form-control" id="priceInput" />
+                  <input type="number" className="form-control" id="priceInput" />
                 </label>
               </div>
               <div className="form-group">
                 <label htmlFor="descriptionInput" className="form-label">
                   Description
-                  <input type="text" className="form-control" id="decriptionInput" />
+                  <textarea className="form-control" id="decriptionInput" />
                 </label>
               </div>
               <div className="form-group">
                 <label htmlFor="availabilityInput" className="form-label">
-                  Availability(true/false)
-                  <input type="text" className="form-control" id="availabilityInput" />
+                  Availability
+                  <select className="form-control" id="availabilityInput">
+                    <option selected>Choose...</option>
+                    <option>True</option>
+                    <option>False</option>
+                  </select>
                 </label>
               </div>
               <button type="submit" className="btn btn-primary">Add Vehicle</button>
