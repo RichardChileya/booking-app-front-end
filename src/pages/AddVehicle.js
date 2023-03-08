@@ -1,5 +1,4 @@
 import React from 'react';
-import Header from '../components/Header';
 
 const AddVehicle = () => (
   <div className="container mt-5">
