@@ -12,7 +12,7 @@ const Login = () => (
           <div className="card-body">
             <form>
               <div className="form-group">
-                <label htmlFor="emailInput" className="form-label">
+                <label htmlFor="emailInput">
                   Email address
                   <input type="email" className="form-control" id="emailInput" />
                 </label>
@@ -23,7 +23,7 @@ const Login = () => (
                   <input type="password" className="form-control" id="passwordInput" />
                 </label>
               </div>
-              <button type="submit" className="btn btn-primary">Submit</button>
+              <button type="submit" className="btn btn-primary">Login</button>
             </form>
           </div>
         </div>
