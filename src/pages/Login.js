@@ -12,12 +12,16 @@ const Login = () => (
           <div className="card-body">
             <form>
               <div className="form-group">
-                <label htmlFor="emailInput">Email address</label>
-                <input type="email" className="form-control" id="emailInput" />
+                <label htmlFor="emailInput" className="form-label">
+                  Email address
+                  <input type="email" className="form-control" id="emailInput" />
+                </label>
               </div>
               <div className="form-group">
-                <label htmlFor="passwordInput">Password</label>
-                <input type="password" className="form-control" id="passwordInput" />
+                <label htmlFor="passwordInput" className="form-label">
+                  Password
+                  <input type="password" className="form-control" id="passwordInput" />
+                </label>
               </div>
               <button type="submit" className="btn btn-primary">Submit</button>
             </form>
