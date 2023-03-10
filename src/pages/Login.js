@@ -25,6 +25,11 @@ const Login = () => (
               </div>
               <button type="submit" className="btn btn-primary">Login</button>
             </form>
+            <div className="mt-3">
+              Don't have an account?
+              {' '}
+              <a href="/register">Register</a>
+            </div>
           </div>
         </div>
       </div>
