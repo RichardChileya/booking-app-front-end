@@ -8,15 +8,18 @@ import Booking from '../pages/Booking';
 import Reservation from '../pages/Reservation';
 import AddVehicle from '../pages/AddVehicle';
 import DeleteVehicle from '../pages/DeleteVehicle';
+import ProtectedRoute from '../components/ProtectedRoute';
 
 const AppRouter = () => (
   <Routes>
     <Route path="/" element={<Home />} />
-    <Route path="vehicle-details/:id" element={<VehicleDetails />} />
-    <Route path="/booking" element={<Booking />} />
-    <Route path="/reservation" element={<Reservation />} />
-    <Route path="/add-car" element={<AddVehicle />} />
-    <Route path="/delete-car" element={<DeleteVehicle />} />
+    <Route element={<ProtectedRoute />}>
+      <Route path="vehicle-details/:id" element={<VehicleDetails />} />
+      <Route path="/booking" element={<Booking />} />
+      <Route path="/reservation" element={<Reservation />} />
+      <Route path="/add-vehicle" element={<AddVehicle />} />
+      <Route path="/delete-vehicle" element={<DeleteVehicle />} />
+    </Route>
     <Route path="/login" element={<Login />} />
     <Route path="/register" element={<Register />} />
   </Routes>
