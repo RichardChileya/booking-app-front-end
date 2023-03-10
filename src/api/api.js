@@ -160,7 +160,7 @@ const api = {
     return vehicle;
   },
 
-  bookVehicle: async (id, booking) => {
+  bookVehicle: async (id, bookings) => {
     const response = await fetch(`${baseURL}/users/${id}/bookings`, {
       ...addbooking(),
     });
