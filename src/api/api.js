@@ -148,7 +148,7 @@ const api = {
     return null;
   },
 
-  listAvailableVehicles: async () => {
+  listVehicles: async () => {
     const response = await fetch(`${baseURL}/vehicles`);
     const vehicles = await response.json();
     return vehicles;
@@ -162,7 +162,7 @@ const api = {
 
   bookVehicle: async (id, booking) => {
     const response = await fetch(`${baseURL}/users/${id}/bookings`, {
-      headers: {Authorization: localStorage.getItem('token') },
+      ...addbooking(),
     });
     const bookings = await response.json();
     return bookings;
@@ -170,8 +170,8 @@ const api = {
 
   deleteBooking: async (userId, bookingId) => {
     const response = await fetch(`${baseURL}/users/${userId}/bookings/${bookingId}`, {
-      ...removeBooking(),
-    },
+        ...removeBooking(),
+      },
     );
     const data = await response.json();
     return data;
