@@ -8,13 +8,13 @@ const unSetAuthToken = () => localStorage.removeItem('token');
 const register = (user) => ({
   method: 'POST',
   headers: { 'Content-Type': 'application.json' },
-  body: json.stringify(user),
+  body: JSON.stringify(user),
 });
 
 const login = (user) => ({
   method: 'POST',
   headers: { 'Content-Type': 'application.json' },
-  body: json.stringify(user),
+  body: JSON.stringify(user),
 });
 
 const vehicleAvailability = (vehicle) => ({
@@ -23,27 +23,27 @@ const vehicleAvailability = (vehicle) => ({
     'Content-Type': 'application.json',
     Authorization: localStorage.getItem('token'),
   },
-  body: JSON.stringify(vehicle), 
-})
+  body: JSON.stringify(vehicle),
+});
 
 const addbooking = (booking) => ({
   method: 'POST',
-  headers: { 
+  headers: {
     'Content-Type': 'application.json',
     Authorization: localStorage.getItem('token'),
   },
-  body: json.stringify(booking),
+  body: JSON.stringify(booking),
 });
 
 const removeBooking = () => ({
   method: 'DELETE',
-  headers: { Authorization: localStorage.getItem('token') }
-})
+  headers: { Authorization: localStorage.getItem('token') },
+});
 
 const logout = () => ({
   method: 'DELETE',
   headers: { Authorization: localStorage.getItem('token') },
-})
+});
 
 const api = {
   register: async (user) => {
@@ -120,19 +120,19 @@ const api = {
 
   userDetails: async () => {
     const response = await fetch(`${baseURL}/users`, {
-      headers: {Authorization: localStorage.getItem('token') },
+      headers: { Authorization: localStorage.getItem('token') },
     });
 
-    const {status: code } = response;
-    
+    const { status: code } = response;
+
     if (code === 200) {
       const currentuser = await response.json();
-      return{
+      return {
         user: currentuser,
         status: 'successful',
         error: null,
         message: 'User is authenticated',
-      }
+      };
     }
 
     if (code === 401) {
@@ -160,28 +160,26 @@ const api = {
     return vehicle;
   },
 
-  bookVehicle: async (id, bookings) => {
+  bookVehicle: async (id) => {
     const response = await fetch(`${baseURL}/users/${id}/bookings`, {
       ...addbooking(),
     });
-    const bookings = await response.json();
-    return bookings;
+    const booking = await response.json();
+    return booking;
   },
 
   deleteBooking: async (userId, bookingId) => {
     const response = await fetch(`${baseURL}/users/${userId}/bookings/${bookingId}`, {
-        ...removeBooking(),
-      },
-    );
+      ...removeBooking(),
+    });
     const data = await response.json();
     return data;
   },
 
-  checkVehicleAvailability: async (VehicleId, Vehicle) => {
+  checkVehicleAvailability: async (VehicleId, vehicle) => {
     const response = await fetch(`${baseURL}/vehicles/${VehicleId}/avalability`, {
-        ...vehicleAvailability({ vehicle }),
-      },
-    );
+      ...vehicleAvailability({ vehicle }),
+    });
     const data = await response.json();
     return data;
   },

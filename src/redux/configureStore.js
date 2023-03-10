@@ -1,8 +1,8 @@
-import { combineReducers, configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
-import logger from "redux-logger";
-import bookingSlice from "./reducer/bookings/bookingSlice";
-import userSlice from "./reducer/userAuth/userSlice";
-import vehicleSlice from "./reducer/vehicles/vehicleSlice";
+import { combineReducers, configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import logger from 'redux-logger';
+import bookingSlice from './reducer/bookings/bookingSlice';
+import userSlice from './reducer/user/userSlice';
+import vehicleSlice from './reducer/vehicles/vehicleSlice';
 
 const rootReducer = combineReducers({
   user: userSlice,
@@ -17,4 +17,4 @@ const store = configureStore(
   },
 );
 
-export default store
+export default store;

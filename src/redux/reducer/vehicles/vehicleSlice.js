@@ -1,18 +1,18 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import api from "../../../api/api";
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import api from '../../../api/api';
 
 const LIST_VEHICLES = 'LIST_VEHICLES';
 const VEHICLE_DETAILS = 'VEHICLE_DETAILS';
-const VEHICLE_AVAILSBILITY = 'VEHICLE_AVAILSBILITY'
+const VEHICLE_AVAILSBILITY = 'VEHICLE_AVAILSBILITY';
 
 const initialState = {
   vehicles: [],
   vehicle: [],
   status: 'idle', // 'idle' | 'loading' | 'succeeded' | 'failed'
   error: null,
-}
+};
 
-export const listVehicles = createAsyncThunk(LIST_VEHICLES, async() => {
+export const listVehicles = createAsyncThunk(LIST_VEHICLES, async () => {
   try {
     return await api.listVehicles();
   } catch (error) {
@@ -23,20 +23,19 @@ export const listVehicles = createAsyncThunk(LIST_VEHICLES, async() => {
 export const vehicleDetails = createAsyncThunk(VEHICLE_DETAILS, async (id) => {
   try {
     return await api.vehicleDetails(id);
-  } catch {
+  } catch (error) {
     return error.message;
   }
 });
 
-export const vehicleAvailability = createAsyncThunk(VEHICLE_AVAILSBILITY, 
-  async ({ vehicleId, vehicle}) => {
+export const vehicleAvailability = createAsyncThunk(VEHICLE_AVAILSBILITY,
+  async ({ vehicleId, vehicle }) => {
     try {
       return await api.checkVehicleAvailability(vehicleId, vehicle);
     } catch (error) {
       return error.message;
     }
-  },
-); 
+  });
 
 const vehicleSlice = createSlice({
   name: 'vehicles',
@@ -114,10 +113,12 @@ const vehicleSlice = createSlice({
         status: 'failed',
         error: action.error.message,
       }));
-  }
+  },
 });
 
-export const { resetVehicleState, resetVehiclesState, setMessageEmpty, setStatusIdle } = vehicleSlice.actions;
+export const {
+  resetVehicleState, resetVehiclesState, setMessageEmpty, setStatusIdle,
+} = vehicleSlice.actions;
 export const vehicles = (state) => state.vehicles.vehicles;
 export const vehicle = (state) => state.vehicles.vehicle;
 export const allStatus = (state) => state.vehicless.status;

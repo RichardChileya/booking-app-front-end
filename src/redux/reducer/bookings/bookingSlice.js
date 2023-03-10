@@ -1,10 +1,10 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { vehicleAvailability } from "../vehicles/vehicleSlice";
-import api from "../../../api/api";
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+// import { vehicleAvailability } from '../vehicles/vehicleSlice';
+import api from '../../../api/api';
 
 const BOOK_VEHICLE = 'BOOK_VEHICLE';
-const GET_BOOKINGS = 'GET_BOOKINGS'
-const DELETE_BOOKING = 'DELETE_BOOKING'
+const GET_BOOKINGS = 'GET_BOOKINGS';
+const DELETE_BOOKING = 'DELETE_BOOKING';
 
 const initialState = {
   bookings: [],
@@ -16,12 +16,11 @@ const initialState = {
 export const bookVehicle = createAsyncThunk(BOOK_VEHICLE,
   async ({ userId, bookings }) => {
     try {
-      return await api.bookVehicle(userId, bookings)
+      return await api.bookVehicle(userId, bookings);
     } catch (error) {
       return error.message;
     }
-  },
-);
+  });
 
 export const getBooking = createAsyncThunk(
   GET_BOOKINGS,
@@ -67,7 +66,7 @@ const bookingSlice = createSlice({
   },
 
   extraReducers: (builder) => {
-    builder 
+    builder
       .addCase(bookVehicle.pending, (state) => ({
         ...state,
         status: 'loading',
@@ -124,9 +123,9 @@ const bookingSlice = createSlice({
   },
 });
 
-export const vehiclesBookings = (state) => state.bookings.bookings
+export const vehiclesBookings = (state) => state.bookings.bookings;
 export const { resetBookingState, setMessageEmpty, setStatusIdle } = bookingSlice.actions;
 export const allStatus = (state) => state.bookings.status;
 export const allMessages = (state) => state.bookings.message;
 
-export default bookingSlice.reducer
+export default bookingSlice.reducer;
