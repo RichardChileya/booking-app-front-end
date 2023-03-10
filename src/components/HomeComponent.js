@@ -1,10 +1,6 @@
 import React from 'react';
 import '../App.css';
-
-const logo = [{
-  id: 1, name: 'Luxury Cars', image: 'https://t4.ftcdn.net/jpg/03/58/16/05/360_F_358160523_d0Tc3knJ0j1RBobgWCjM4BZUo9gx33ZX.jpg',
-},
-];
+import VehiclesList from './VehiclesList';
 
 const carData = [
   {
@@ -52,31 +48,11 @@ const carData = [
 
 const HomeComponent = () => (
   <>
-    {logo.map((logoData) => (
-      <div key={logoData.id} className="booking-header">
-        <h1>
-          Welecome to
-          {' '}
-          {logoData.name}
-        </h1>
-        <img src={logoData.image} alt="" />
-      </div>
-
-    ))}
     <h2 className="container">Please select a car </h2>
     <div className="container">
-      <div className="car-info">
+      <div className="car-info row">
         {carData.map((item) => (
-          <div key={item.id} className="car-details">
-            <img src={item.image} alt=" vehicles" className="car-imgs" />
-            <h2>{item.name}</h2>
-            <p>{item.desc}</p>
-            <div className="icons-container">
-              <span><img src="https://cdn-icons-png.flaticon.com/512/4628/4628653.png" alt="fb icon" className="icons" /></span>
-              <span><img src="https://cdn-icons-png.flaticon.com/512/356/356076.png" alt="twitter icon" className="icons" /></span>
-              <span><img src="https://cdn-icons-png.flaticon.com/512/1362/1362857.png" alt="instagram icon" className="icons" /></span>
-            </div>
-          </div>
+          <VehiclesList key={item.id} item={item} />
         ))}
       </div>
     </div>
