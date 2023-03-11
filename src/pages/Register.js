@@ -23,18 +23,20 @@ const Register = () => {
       .matches(
         /^(?=.{4,50}$)(?![a-z])(?!.*[_.]{2})[a-zA-Z ]+(?<![_.])$/,
         'Name should have at least 4 characters and should not contain numbers or special characters/punctuations!',
-      )
-      .required('Name is required!'),
-    email: Yup.string().required('Email is required!').email('Invalid Email!'),
+      ),
+    // .required('Name is required!'),
+    email: Yup.string()
+    // .required('Email is required!')
+      .email('Invalid Email!'),
     password: Yup.string()
-      .required('Password is required!')
+    // .required('Password is required!')
       .matches(
         /^[a-zA-Z0-9!@#$%^&* ]{6,20}$/,
         'Password must contain at least 6 characters!',
       ),
     passwordConfirmation: Yup.string()
-      .oneOf([Yup.ref('password'), null], 'Password not match!')
-      .required('Confirm Password is required!'),
+      .oneOf([Yup.ref('password'), null], 'Password not match!'),
+    // .required('Confirm Password is required!'),
   });
 
   const message = useSelector(allMessages);
@@ -48,6 +50,7 @@ const Register = () => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
+    console.log(event.target);
     setValues((prevState) => ({ ...prevState, [name]: value }));
   };
 
@@ -56,7 +59,7 @@ const Register = () => {
   };
 
   useEffect(() => {
-    if (isTokenSet) navigate('/');
+    // if (isTokenSet) navigate('/');
   }, [isTokenSet]);
 
   // const register = () =>
@@ -75,7 +78,7 @@ const Register = () => {
                 <Formik
                   initialValues={initialValues}
                   validationSchema={SignUpSchema}
-                  onSubmit={signUphandler}
+                  onSubmit={() => signUphandler(values)}
                 >
                   {({
                     errors, touched,
