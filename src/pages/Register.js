@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
@@ -44,6 +44,13 @@ const Register = () => {
   const navigate = useNavigate();
   const isTokenSet = userToken();
 
+  const [values, setValues] = useState(initialValues);
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setValues((prevState) => ({ ...prevState, [name]: value }));
+  };
+
   const signUphandler = (user) => {
     dispatch(signUp(user));
   };
@@ -71,7 +78,7 @@ const Register = () => {
                   onSubmit={signUphandler}
                 >
                   {({
-                    errors, touched, dirty, isValid,
+                    errors, touched,
                   }) => (
                     <Form>
                       <div className="form-group">
@@ -82,6 +89,9 @@ const Register = () => {
                             name="name"
                             className="form-control"
                             id="nameInput"
+                            autoComplete="name"
+                            value={values.name}
+                            onChange={handleChange}
                           />
                         </label>
                         {errors.name && touched.name && <div className="form-error">{errors.name}</div>}
@@ -94,6 +104,9 @@ const Register = () => {
                             name="role"
                             className="form-control"
                             id="roleInput"
+                            autoComplete="role"
+                            value={values.role}
+                            onChange={handleChange}
                           />
                         </label>
                         {errors.role && touched.role && <div className="form-error">{errors.role}</div>}
@@ -106,6 +119,9 @@ const Register = () => {
                             name="email"
                             className="form-control"
                             id="emailInput"
+                            autoComplete="email"
+                            value={values.email}
+                            onChange={handleChange}
                           />
                         </label>
                         {errors.email && touched.email && <div className="form-error">{errors.email}</div>}
@@ -118,6 +134,9 @@ const Register = () => {
                             name="password"
                             className="form-control"
                             id="passwordInput"
+                            autoComplete="password"
+                            value={values.password}
+                            onChange={handleChange}
                           />
                         </label>
                         {errors.password && touched.password && <div className="form-error">{errors.password}</div>}
@@ -127,16 +146,19 @@ const Register = () => {
                           Confirm password
                           <input
                             type="password"
-                            name="confirmPassword"
+                            name="passwordConfirmation"
                             className="form-control"
                             id="confirmPasswordInput"
+                            autoComplete="password"
+                            value={values.passwordConfirmation}
+                            onChange={handleChange}
                           />
                         </label>
                         {errors.confirmPassword && touched.confirmPassword && (
                         <div className="form-error">{errors.confirmPassword}</div>
                         )}
                       </div>
-                      <button type="submit" className="btn btn-primary" disabled={!dirty || !isValid}>
+                      <button type="submit" className="btn btn-primary">
                         Register
                       </button>
                     </Form>

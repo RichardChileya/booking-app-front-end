@@ -1,4 +1,4 @@
-const baseURL = process.env.REACT_APP_BASE_URL;
+const baseURL = 'http://localhost:3000/api';
 // REACT_APP_BASE_URL=http://localhost:3000/api
 
 const setAuthToken = ({ headers }) => localStorage.setItem('token', headers.get('Authorizatin'));
@@ -7,20 +7,20 @@ const unSetAuthToken = () => localStorage.removeItem('token');
 
 const register = (user) => ({
   method: 'POST',
-  headers: { 'Content-Type': 'application.json' },
+  headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify(user),
 });
 
 const login = (user) => ({
   method: 'POST',
-  headers: { 'Content-Type': 'application.json' },
+  headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify(user),
 });
 
 const vehicleAvailability = (vehicle) => ({
   method: 'PATCH',
   headers: {
-    'Content-Type': 'application.json',
+    'Content-Type': 'application/json',
     Authorization: localStorage.getItem('token'),
   },
   body: JSON.stringify(vehicle),
@@ -29,7 +29,7 @@ const vehicleAvailability = (vehicle) => ({
 const addbooking = (booking) => ({
   method: 'POST',
   headers: {
-    'Content-Type': 'application.json',
+    'Content-Type': 'application/json',
     Authorization: localStorage.getItem('token'),
   },
   body: JSON.stringify(booking),
@@ -47,7 +47,7 @@ const logout = () => ({
 
 const api = {
   register: async (user) => {
-    const response = await fetch(`${baseURL}/register`, {
+    const response = await fetch(`${baseURL}/signup`, {
       ...register({ user }),
     });
 
