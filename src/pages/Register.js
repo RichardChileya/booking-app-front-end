@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
+import { Formik, Form } from 'formik';
+import Alert from '../components/Alert';
 import { allMessages, allStatus } from '../redux/reducer/bookings/bookingSlice';
 import userToken from '../redux/reducer/user/userToken';
 import { signUp } from '../redux/reducer/user/userSlice';
@@ -18,7 +20,7 @@ const Register = () => {
     name: Yup.string()
       .min(1, 'Too Short!')
       .max(100, 'Too Long')
-      .mathches(
+      .matches(
         /^(?=.{4,50}$)(?![a-z])(?!.*[_.]{2})[a-zA-Z ]+(?<![_.])$/,
         'Name should have at least 4 characters and should not contain numbers or special characters/punctuations!',
       )
@@ -42,7 +44,7 @@ const Register = () => {
   const navigate = useNavigate();
   const isTokenSet = userToken();
 
-  const signUphsndler = (user) => {
+  const signUphandler = (user) => {
     dispatch(signUp(user));
   };
 
@@ -65,47 +67,78 @@ const Register = () => {
               <div className="card-body">
                 <Formik
                   initialValues={initialValues}
-                  onSubmit={handleSubmit}
                   validationSchema={SignUpSchema}
+                  onSubmit={signUphandler}
                 >
-                  {({ errors, touched }) => (
+                  {({
+                    errors, touched, dirty, isValid,
+                  }) => (
                     <Form>
                       <div className="form-group">
                         <label htmlFor="nameInput" className="form-label">
                           Name
-                          <Field type="text" name="name" className="form-control" id="nameInput" />
-                          <ErrorMessage name="name" component="div" className="invalid-feedback" />
+                          <input
+                            type="text"
+                            name="name"
+                            className="form-control"
+                            id="nameInput"
+                          />
                         </label>
+                        {errors.name && touched.name && <div className="form-error">{errors.name}</div>}
                       </div>
                       <div className="form-group">
                         <label htmlFor="roleInput" className="form-label">
                           Role
-                          <Field type="text" name="role" className="form-control" id="roleInput" />
-                          <ErrorMessage name="role" component="div" className="invalid-feedback" />
+                          <input
+                            type="text"
+                            name="role"
+                            className="form-control"
+                            id="roleInput"
+                          />
                         </label>
+                        {errors.role && touched.role && <div className="form-error">{errors.role}</div>}
                       </div>
                       <div className="form-group">
                         <label htmlFor="emailInput" className="form-label">
                           Email address
-                          <Field type="email" name="email" className="form-control" id="emailInput" />
-                          <ErrorMessage name="email" component="div" className="invalid-feedback" />
+                          <input
+                            type="email"
+                            name="email"
+                            className="form-control"
+                            id="emailInput"
+                          />
                         </label>
+                        {errors.email && touched.email && <div className="form-error">{errors.email}</div>}
                       </div>
                       <div className="form-group">
                         <label htmlFor="passwordInput" className="form-label">
                           Password
-                          <Field type="password" name="password" className="form-control" id="passwordInput" />
-                          <ErrorMessage name="password" component="div" className="invalid-feedback" />
+                          <input
+                            type="password"
+                            name="password"
+                            className="form-control"
+                            id="passwordInput"
+                          />
                         </label>
+                        {errors.password && touched.password && <div className="form-error">{errors.password}</div>}
                       </div>
                       <div className="form-group">
                         <label htmlFor="confirmPasswordInput" className="form-label">
                           Confirm password
-                          <Field type="password" name="confirmPassword" className="form-control" id="confirmPasswordInput" />
-                          <ErrorMessage name="confirmPassword" component="div" className="invalid-feedback" />
+                          <input
+                            type="password"
+                            name="confirmPassword"
+                            className="form-control"
+                            id="confirmPasswordInput"
+                          />
                         </label>
+                        {errors.confirmPassword && touched.confirmPassword && (
+                        <div className="form-error">{errors.confirmPassword}</div>
+                        )}
                       </div>
-                      <button type="submit" className="btn btn-primary">Register</button>
+                      <button type="submit" className="btn btn-primary" disabled={!dirty || !isValid}>
+                        Register
+                      </button>
                     </Form>
                   )}
                 </Formik>
