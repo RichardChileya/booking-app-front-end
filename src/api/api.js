@@ -1,15 +1,17 @@
 const baseURL = 'http://localhost:3000/api';
 // REACT_APP_BASE_URL=http://localhost:3000/api
 
-const setAuthToken = ({ headers }) => localStorage.setItem('token', headers.get('Authorizatin'));
+const setAuthToken = ({ headers }) => localStorage.setItem('token', headers.get('Authorization'));
 
 const unSetAuthToken = () => localStorage.removeItem('token');
 
-const register = (user) => ({
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify(user),
-});
+const register = (user) => {
+  return ({
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ api_user: user.user }),
+  });
+};
 
 const login = (user) => ({
   method: 'POST',

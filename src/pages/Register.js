@@ -50,7 +50,6 @@ const Register = () => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    console.log(event.target);
     setValues((prevState) => ({ ...prevState, [name]: value }));
   };
 
@@ -78,7 +77,11 @@ const Register = () => {
                 <Formik
                   initialValues={initialValues}
                   validationSchema={SignUpSchema}
-                  onSubmit={() => signUphandler(values)}
+                  onSubmit={() => signUphandler({
+                    name: values.name,
+                    email: values.email,
+                    password: values.password,
+                  })}
                 >
                   {({
                     errors, touched,
@@ -98,21 +101,6 @@ const Register = () => {
                           />
                         </label>
                         {errors.name && touched.name && <div className="form-error">{errors.name}</div>}
-                      </div>
-                      <div className="form-group">
-                        <label htmlFor="roleInput" className="form-label">
-                          Role
-                          <input
-                            type="text"
-                            name="role"
-                            className="form-control"
-                            id="roleInput"
-                            autoComplete="role"
-                            value={values.role}
-                            onChange={handleChange}
-                          />
-                        </label>
-                        {errors.role && touched.role && <div className="form-error">{errors.role}</div>}
                       </div>
                       <div className="form-group">
                         <label htmlFor="emailInput" className="form-label">
