@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { setStatusIdle as setBookingStatus } from '../redux/reducer/bookings/bookingSlice';
@@ -49,9 +50,9 @@ const Alert = ({ message }) => {
         show={show}
         dismissible
         onClose={() => {
-          setReservationStatusIdle();
-          setAuthStatusIdle();
-          setCarStatusIdle();
+          setBookingStatusIdle();
+          setUserStatusIdle();
+          setVehiclesStatusIdle();
           setShow(false);
         }}
       >
@@ -62,7 +63,7 @@ const Alert = ({ message }) => {
 };
 
 Alert.propTypes = {
-  message: propTypes.string.isRequired,
+  message: PropTypes.string.isRequired,
 };
 
 export default Alert;
