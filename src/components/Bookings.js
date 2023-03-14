@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { Spinner, Option } from 'react-bootstrap';
-import { Button } from 'bootstrap';
+import { Spinner, Option, Button } from 'react-bootstrap';
 import Select from 'react-bootstrap-select';
 import dayjs from 'dayjs';
 import { DatePicker } from 'antd';
@@ -100,7 +99,7 @@ const Bookings = () => {
             minDate={new Date()}
             onChange={(date) => setReturnDate(handleDateFormat(date))}
           />
-          <Select
+          <select
             className=""
             style={{ color: 'rgb(255, 193, 7)' }}
             name="Vehicle"
@@ -118,7 +117,7 @@ const Bookings = () => {
                 {name}
               </Option>
             ))}
-          </Select>
+          </select>
         </div>
         <div>
           <Button
