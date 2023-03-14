@@ -45,20 +45,35 @@ const Register = () => {
 
   const navigate = useNavigate();
   const isTokenSet = userToken();
+  console.log(isTokenSet);
 
   const [values, setValues] = useState(initialValues);
+  const [signupStatus, setSignupStatus] = useState('');
 
   const handleChange = (event) => {
     const { name, value } = event.target;
     setValues((prevState) => ({ ...prevState, [name]: value }));
   };
 
-  const signUphandler = (user) => {
-    dispatch(signUp(user));
+  const signUphandler = async (user) => {
+    const register = await dispatch(signUp(user));
+    if (register.payload.status === '00') {
+      setSignupStatus('success');
+      setValues((prevState) => ({
+        ...prevState,
+        name: '',
+        email: '',
+        password: '',
+        passwordConfirmation: '',
+      }));
+      navigate('/');
+    } else {
+      setSignupStatus('error');
+    }
   };
 
   useEffect(() => {
-    // if (isTokenSet) navigate('/');
+    if (isTokenSet) navigate('/');
   }, [isTokenSet]);
 
   // const register = () =>
@@ -74,6 +89,16 @@ const Register = () => {
                 Register
               </div>
               <div className="card-body">
+                {signupStatus === 'success' && (
+                <div className="alert alert-success" role="alert">
+                  User successfully registered!
+                </div>
+                )}
+                {signupStatus === 'error' && (
+                <div className="alert alert-danger" role="alert">
+                  An error occured!
+                </div>
+                )}
                 <Formik
                   initialValues={initialValues}
                   validationSchema={SignUpSchema}

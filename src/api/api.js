@@ -5,18 +5,16 @@ const setAuthToken = ({ headers }) => localStorage.setItem('token', headers.get(
 
 const unSetAuthToken = () => localStorage.removeItem('token');
 
-const register = (user) => {
-  return ({
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ api_user: user.user }),
-  });
-};
+const register = (user) => ({
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ api_user: user.user }),
+});
 
 const login = (user) => ({
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify(user),
+  body: JSON.stringify({ api_user: user.user }),
 });
 
 const vehicleAvailability = (vehicle) => ({
@@ -56,7 +54,6 @@ const api = {
     const { status: code } = response;
 
     if (code === 200) setAuthToken(response);
-
     const data = await response.json();
     return data;
   },
