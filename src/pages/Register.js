@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import { Formik, Form } from 'formik';
 import Alert from '../components/Alert';
@@ -43,7 +43,7 @@ const Register = () => {
   const status = useSelector(allStatus);
   const dispatch = useDispatch();
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const isTokenSet = userToken();
   console.log(isTokenSet);
 
