@@ -75,7 +75,6 @@ const Register = () => {
     if (isTokenSet) navigate('/');
   }, [isTokenSet]);
 
-  // const register = () =>
   document.title = 'Luxury Cars | Register';
   return (
     <>
