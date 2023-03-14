@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { signIn } from '../redux/reducer/user/userSlice';
@@ -23,14 +23,15 @@ const Login = () => {
     e.preventDefault();
     if (user.email && user.password) {
       dispatch(signIn(user));
+      navigate('/');
     } else {
       <h1>Error</h1>;
     }
   };
 
-  useDispatch(() => {
+  useEffect(() => {
     if (isTokenSet) navigate('/');
-  }, [isTokenSet, navigate]);
+  }, [isTokenSet]);
 
   document.title = 'Luxury Cars | Login';
 
