@@ -62,7 +62,6 @@ const api = {
     const response = await fetch(`${baseURL}/login`, {
       ...login({ user }),
     });
-    console.log(response);
 
     const { status: code } = response;
 
