@@ -1,10 +1,8 @@
 import React from 'react';
-import Header from '../components/Header';
 
 const Booking = () => (
 
   <>
-    <Header />
     <div className="container mt-5">
       <div className="row justify-content-center">
         <div className="col-md-6">
