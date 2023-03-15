@@ -9,7 +9,7 @@ import { DatePicker } from 'antd';
 import { allMessages, allStatus, bookVehicle } from '../redux/reducer/bookings/bookingSlice';
 import { authenticatedUser } from '../redux/reducer/user/userSlice';
 import userToken from '../redux/reducer/user/userToken';
-import { vehicle, vehicles } from '../redux/reducer/vehicles/vehicleSlice';
+import { vehicle, vehicles, listVehicles } from '../redux/reducer/vehicles/vehicleSlice';
 import Alert from './Alert';
 
 const Bookings = () => {
@@ -29,7 +29,7 @@ const Bookings = () => {
 
   const handleVehicleId = (vehicleId) => setVehicleId(+vehicleId);
 
-  const handleBooking = () => {
+  const handleBooking = async () => {
     const booking = {
       pickup_date: pickupDate,
       return_date: returnDate,
@@ -41,7 +41,12 @@ const Bookings = () => {
       userId: currentUser.id,
     };
 
-    dispatch(bookVehicle(bookingObject));
+    const bookResponse = await dispatch(bookVehicle(bookingObject));
+    if (bookResponse.payload.status === '00') {
+      setPickupDate('');
+      setReturnDate('');
+      setVehicleId('');
+    }
   };
 
   const navigateBooking = () => {
@@ -54,13 +59,21 @@ const Bookings = () => {
 
   const handleSelectedVehicle = () => {
     if (selectedVehicle) setVehicleId(selectedVehicle);
+    handleSelectedVehicle();
   };
 
+  // useEffect(() => {
+  //   handleSelectedVehicle();
+  //   navigateBooking();
+  //   checkAuthorizedUser();
+  //   listVehicles();
+  // }, [message, isTokenSet, selectedVehicle]);
+
   useEffect(() => {
-    handleSelectedVehicle();
     navigateBooking();
     checkAuthorizedUser();
-  }, [message, isTokenSet, selectedVehicle]);
+    dispatch(listVehicles());
+  }, [message, selectedVehicle]);
 
   document.title = 'Luxury Vehicles | Booking';
   return (
@@ -109,11 +122,12 @@ const Bookings = () => {
             required
           >
             <option value="" disabled>Select a Vehicle</option>
-            {allVehicles.map(({ id: vehicleId, name }) => (
+            {allVehicles.map((vehicleId) => (
               <option value={vehicleId.toString()} key={vehicleId}>
-                {name}
+                {vehicleId.name}
               </option>
             ))}
+
           </select>
         </div>
         <div>
