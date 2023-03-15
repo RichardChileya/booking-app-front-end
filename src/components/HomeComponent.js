@@ -6,7 +6,12 @@ import '../App.css';
 // import VehiclesList from './VehiclesList';
 
 const HomeComponent = () => {
-  
+  const carData = useSelector(vehicles);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(listVehicles());
+  }, []);
   return (
     <>
       <h2 className="container">Please select a car </h2>
