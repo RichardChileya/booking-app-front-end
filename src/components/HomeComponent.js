@@ -18,7 +18,11 @@ const HomeComponent = () => {
       <div className="container">
         <div className="car-info row">
           {carData.map((car) => (
-            
+            <React.Fragment key={car.id}>
+              <img src={car.image} alt={car.name} />
+              <h2>{car.name}</h2>
+              <p>{car.description}</p>
+            </React.Fragment>
           ))}
         </div>
       </div>
