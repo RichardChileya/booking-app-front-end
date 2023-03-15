@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 // import { useNavigate } from 'react-router-dom';
 import { vehicles, listVehicles } from '../redux/reducer/vehicles/vehicleSlice';
 import '../App.css';
-// import VehiclesList from './VehiclesList';
+import VehiclesList from './VehiclesList';
 
 const HomeComponent = () => {
   const carData = useSelector(vehicles);
@@ -18,11 +18,7 @@ const HomeComponent = () => {
       <div className="container">
         <div className="car-info row">
           {carData.map((car) => (
-            <React.Fragment key={car.id}>
-              <img src={car.image} alt={car.name} />
-              <h2>{car.name}</h2>
-              <p>{car.description}</p>
-            </React.Fragment>
+            <VehiclesList key={car.id} item={car} />
           ))}
         </div>
       </div>
