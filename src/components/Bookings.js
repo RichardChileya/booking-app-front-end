@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { Spinner, Option, Button } from 'react-bootstrap';
-import Select from 'react-bootstrap-select';
+import { Spinner, Button } from 'react-bootstrap';
 import dayjs from 'dayjs';
-import { DatePicker } from 'antd';
+import { DatePicker, Select } from 'antd';
 import { allMessages, allStatus, bookVehicle } from '../redux/reducer/bookings/bookingSlice';
 import { authenticatedUser } from '../redux/reducer/user/userSlice';
 import userToken from '../redux/reducer/user/userToken';
@@ -62,6 +61,8 @@ const Bookings = () => {
     checkAuthorizedUser();
   }, [message, isTokenSet, selectedVehicle]);
 
+  const { Option } = Select;
+
   document.title = 'Luxury Vehicles | Booking';
   return (
     <>
@@ -103,7 +104,7 @@ const Bookings = () => {
             className=""
             style={{ color: 'rgb(255, 193, 7)' }}
             name="Vehicle"
-            value={selectedVehicle?.toString()}
+            defaultValue={''}
             label="Select a Vehicle"
             onChange={handleVehicleId}
             required
@@ -112,10 +113,11 @@ const Bookings = () => {
               unmount: { y: 25 },
             }}
           >
+             <option value="" disabled>Select a Vehicle</option>
             {allVehicles.map(({ id: vehicleId, name }) => (
-              <Option value={vehicleId.toString()} key={vehicleId}>
+              <option value={vehicleId.toString()} key={vehicleId}>
                 {name}
-              </Option>
+              </option>
             ))}
           </select>
         </div>
