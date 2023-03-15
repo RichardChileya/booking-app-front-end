@@ -19,7 +19,6 @@ export const listVehicles = createAsyncThunk(LIST_VEHICLES, async () => {
     return error.message;
   }
 });
-console.log(listVehicles);
 
 export const vehicleDetails = createAsyncThunk(VEHICLE_DETAILS, async (id) => {
   try {

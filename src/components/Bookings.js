@@ -1,15 +1,16 @@
+/* eslint-disable import/no-extraneous-dependencies */
+import 'antd/dist/antd.css';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Spinner, Button } from 'react-bootstrap';
 import dayjs from 'dayjs';
-import { DatePicker, Select } from 'antd';
+import { DatePicker } from 'antd';
 import { allMessages, allStatus, bookVehicle } from '../redux/reducer/bookings/bookingSlice';
 import { authenticatedUser } from '../redux/reducer/user/userSlice';
 import userToken from '../redux/reducer/user/userToken';
 import { vehicle, vehicles } from '../redux/reducer/vehicles/vehicleSlice';
 import Alert from './Alert';
-import 'antd/dist/antd.css';
 
 const Bookings = () => {
   const [pickupDate, setPickupDate] = useState(null);
@@ -61,8 +62,6 @@ const Bookings = () => {
     checkAuthorizedUser();
   }, [message, isTokenSet, selectedVehicle]);
 
-  const { Option } = Select;
-
   document.title = 'Luxury Vehicles | Booking';
   return (
     <>
@@ -104,16 +103,12 @@ const Bookings = () => {
             className=""
             style={{ color: 'rgb(255, 193, 7)' }}
             name="Vehicle"
-            defaultValue={''}
+            defaultValue=""
             label="Select a Vehicle"
             onChange={handleVehicleId}
             required
-            animate={{
-              mount: { y: 0 },
-              unmount: { y: 25 },
-            }}
           >
-             <option value="" disabled>Select a Vehicle</option>
+            <option value="" disabled>Select a Vehicle</option>
             {allVehicles.map(({ id: vehicleId, name }) => (
               <option value={vehicleId.toString()} key={vehicleId}>
                 {name}

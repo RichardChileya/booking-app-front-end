@@ -123,7 +123,7 @@ const authSlice = createSlice({
 });
 
 export const { setStatusIdle } = authSlice.actions;
-export const authenticatedUser = (state) => state.auth.authenticatedUser;
+export const authenticatedUser = (auth) => auth.authenticatedUser;
 export const allStatus = (state) => state.auth.status;
 export const allMessages = (state) => state.auth.message;
 
