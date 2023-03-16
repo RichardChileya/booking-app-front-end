@@ -5,15 +5,16 @@ const Popup = ({ showPopup, handleClosePopup, item }) => (
   <>
     {/* <button type="button" onClick={handleOpenPopup}>Open Popup</button> */}
     {showPopup && (
-    <div className="popup">
+    <div className=" popup">
       <div className="popup-content">
         <button type="button" className="close" onClick={handleClosePopup}>&times;</button>
         <img src={item.image} alt="vehicle img" className="pop-imgs" />
+        <h2 className="desc">{item.name}</h2>
         <p className="desc">{item.description}</p>
         <p>
           Availability:
           {' '}
-          {item.available ? 'Yes' : 'No'}
+          {item.available.toString()}
         </p>
         <p>
           {' '}
@@ -34,7 +35,7 @@ Popup.propTypes = {
   item: PropTypes.shape({
     available: PropTypes.bool.isRequired,
     image: PropTypes.string.isRequired,
-    // name: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
     daily_price: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
   }).isRequired,
