@@ -180,8 +180,8 @@ Give a ⭐️ if you like this project!
 <!-- ACKNOWLEDGEMENTS -->
 
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
-I would like to thank:
-- Microverse for providing for adding this project in t carriculum
+We would like to thank:
+- Microverse for providing for adding this project in the carriculum.
 - [Murat Korkmaz](https://www.behance.net/gallery/26425031/Vespa-Responsive-Redesign) the creator of the original design.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -190,6 +190,6 @@ I would like to thank:
 
 ## 📝 License <a name="license"></a>
 
-This project is [MIT](./MIT.md) licensed.
+This project is [MIT](./LICENSE) licensed.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p
