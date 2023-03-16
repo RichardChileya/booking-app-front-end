@@ -14,8 +14,8 @@ const AppRouter = () => (
   <Routes>
     <Route path="/" element={<Home />} />
     <Route element={<ProtectedRoute />}>
-      <Route path="vehicle-details/:id" element={<VehicleDetails />} />
       <Route path="/booking" element={<Booking />} />
+      <Route path="vehicle-details/:id" element={<VehicleDetails />} />
       <Route path="/reservation" element={<Reservation />} />
       <Route path="/add-vehicle" element={<AddVehicle />} />
       <Route path="/delete-vehicle" element={<DeleteVehicle />} />
