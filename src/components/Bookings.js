@@ -1,5 +1,5 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import 'antd/dist/antd.css';
+// import '~antd/dist/antd.css';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -57,10 +57,12 @@ const Bookings = () => {
     if (!isTokenSet) navigate('/login');
   };
 
-  const handleSelectedVehicle = () => {
-    if (selectedVehicle) setVehicleId(selectedVehicle);
-    handleSelectedVehicle();
-  };
+  console.log(currentUser);
+
+  // const handleSelectedVehicle = () => {
+  //   if (selectedVehicle) setVehicleId(selectedVehicle);
+  //   handleSelectedVehicle();
+  // };
 
   // useEffect(() => {
   //   handleSelectedVehicle();
@@ -123,7 +125,7 @@ const Bookings = () => {
           >
             <option value="" disabled>Select a Vehicle</option>
             {allVehicles.map((vehicleId) => (
-              <option value={vehicleId.toString()} key={vehicleId}>
+              <option value={vehicleId.id} key={vehicleId}>
                 {vehicleId.name}
               </option>
             ))}
