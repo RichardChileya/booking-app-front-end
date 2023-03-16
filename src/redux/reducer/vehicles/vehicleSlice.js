@@ -7,7 +7,7 @@ const VEHICLE_AVAILSBILITY = 'VEHICLE_AVAILSBILITY';
 
 const initialState = {
   vehicles: [],
-  vehicle: [],
+  vehicle: {},
   status: 'idle', // 'idle' | 'loading' | 'succeeded' | 'failed'
   error: null,
 };
@@ -50,7 +50,7 @@ const vehicleSlice = createSlice({
     }),
     resetVehiclesState: (state) => ({
       ...state,
-      Vehicles: [],
+      vehicles: [],
       status: 'idle',
       message: '',
       error: null,
@@ -91,7 +91,7 @@ const vehicleSlice = createSlice({
       }))
       .addCase(vehicleDetails.fulfilled, (state, action) => ({
         ...state,
-        vehicle: action.payload,
+        vehicle: action.payload.data,
         status: 'successful',
       }))
       .addCase(vehicleDetails.rejected, (state, action) => ({
@@ -105,7 +105,7 @@ const vehicleSlice = createSlice({
       }))
       .addCase(listVehicles.fulfilled, (state, action) => ({
         ...state,
-        vehicles: action.payload.vehicles,
+        vehicles: action.payload.data,
         status: 'successful',
       }))
       .addCase(listVehicles.rejected, (state, action) => ({
