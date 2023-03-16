@@ -19,13 +19,16 @@ const Login = () => {
     setUser({ ...user, [input]: value });
   };
 
-  const handleSignIn = (e) => {
+  const handleSignIn = async (e) => {
     e.preventDefault();
-    if (user.email && user.password) {
-      dispatch(signIn(user));
+    // if (!user.email || !user.password) {
+    //   return alert('error');
+    // }
+    const authLogin = await dispatch(signIn(user));
+    console.log(authLogin);
+    if (authLogin.payload.status === 'successful') {
+      localStorage.setItem('authUser', JSON.stringify(authLogin.payload.user));
       navigate('/');
-    } else {
-      <h1>Error</h1>;
     }
   };
 

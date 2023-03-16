@@ -6,8 +6,15 @@ const LOGOUT = 'LOGOUT';
 const REGISTER = 'REGISTER';
 const AUTH_USER_DETAIL = 'AUTH_USER_DETAIL';
 
+const authUserSaved = localStorage.getItem('authUser');
+let authenticatedUserSaved;
+if (authUserSaved !== 'null' && authUserSaved !== 'undefined') {
+  authenticatedUserSaved = JSON.parse(authUserSaved);
+} else {
+  authenticatedUserSaved = {};
+}
 const initialState = {
-  authUser: {},
+  authenticatedUser: authenticatedUserSaved,
   status: 'idle', // 'idle' | 'loading' | 'succeeded' | 'failed' | 'unauthorized' | 'expired'//
   message: '',
   error: null,
@@ -67,7 +74,7 @@ const authSlice = createSlice({
         ...state,
         authenticatedUser: action.payload.data,
         message: action.payload.message,
-        status: action.payload.status === 200 ? 'successful' : 'failed',
+        status: action.payload.status,
       }))
       .addCase(signUp.rejected, (state, action) => ({
         ...state,
@@ -123,8 +130,8 @@ const authSlice = createSlice({
 });
 
 export const { setStatusIdle } = authSlice.actions;
-export const authenticatedUser = (auth) => auth.authenticatedUser;
-export const allStatus = (state) => state.auth.status;
-export const allMessages = (state) => state.auth.message;
+export const authenticatedUser = (state) => state.user.authenticatedUser;
+export const allStatus = (state) => state.user.status;
+export const allMessages = (state) => state.user.message;
 
 export default authSlice.reducer;

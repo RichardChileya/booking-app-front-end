@@ -91,7 +91,7 @@ const vehicleSlice = createSlice({
       }))
       .addCase(vehicleDetails.fulfilled, (state, action) => ({
         ...state,
-        car: action.payload,
+        vehicle: action.payload,
         status: 'successful',
       }))
       .addCase(vehicleDetails.rejected, (state, action) => ({
@@ -105,7 +105,7 @@ const vehicleSlice = createSlice({
       }))
       .addCase(listVehicles.fulfilled, (state, action) => ({
         ...state,
-        allCars: action.payload,
+        vehicles: action.payload.vehicles,
         status: 'successful',
       }))
       .addCase(listVehicles.rejected, (state, action) => ({

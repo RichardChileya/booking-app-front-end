@@ -57,6 +57,7 @@ const Register = () => {
   const signUphandler = async (user) => {
     const register = await dispatch(signUp(user));
     if (register.payload.status === '00') {
+      localStorage.setItem('authUser', JSON.stringify(register.payload.data));
       setSignupStatus('success');
       setValues((prevState) => ({
         ...prevState,
