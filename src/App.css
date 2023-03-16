@@ -97,25 +97,23 @@ a {
 }
 
 .popup-content {
+  padding: 1rem;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  gap: 2rem;
+  justify-content: space-between;
 }
 
 .pop-imgs {
-  width: 30%;
+  width: 100%;
 }
 
 .close {
-  right: 8rem;
+  right: 7rem;
   position: fixed;
   top: 3rem;
   font-size: 2rem;
-  width: 5rem;
+  width: 3rem;
   border: none;
   border-radius: 95%;
 }
 
-.desc {
-  width: 50%;
-}

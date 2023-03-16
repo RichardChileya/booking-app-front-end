@@ -8,25 +8,30 @@ const Popup = ({ showPopup, handleClosePopup, item }) => (
     <div className=" popup">
       <div className="popup-content">
         <button type="button" className="close" onClick={handleClosePopup}>&times;</button>
-        <img src={item.image} alt="vehicle img" className="pop-imgs" />
-        <h2 className="desc">{item.name}</h2>
-        <h3 className="desc">
-          {' '}
-          model:
-          {' '}
-          {item.model}
-        </h3>
-        <p className="desc">{item.description}</p>
-        <p>
-          Availability:
-          {' '}
-          {item.available.toString()}
-        </p>
-        <p>
-          {' '}
-          Daily Price $:
-          {item.daily_price}
-        </p>
+        <div className="left-block">
+          <img src={item.image} alt="vehicle img" className="pop-imgs" />
+        </div>
+        <div className="right-block">
+
+          <h2 className="desc">{item.name}</h2>
+          <h3 className="desc">
+            {' '}
+            model:
+            {' '}
+            {item.model}
+          </h3>
+          <p className="desc">{item.description}</p>
+          <p>
+            Availability:
+            {' '}
+            {item.available.toString()}
+          </p>
+          <p>
+            {' '}
+            Daily Price $:
+            {item.daily_price}
+          </p>
+        </div>
       </div>
     </div>
     )}
