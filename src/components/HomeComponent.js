@@ -16,7 +16,7 @@ const HomeComponent = () => {
     <>
       <h2 className="container">Please select a car </h2>
       <div className="container">
-        <div className="car-info row">
+        <div className="car-info">
           {carData.map((car) => (
             <VehiclesList key={car.id} item={car} />
           ))}
