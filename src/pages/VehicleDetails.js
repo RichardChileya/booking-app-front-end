@@ -20,7 +20,7 @@ const VehicleDetails = () => {
   return (
     loading ? 'Loading'
       : (
-        <div className="row">
+        <div className="row d-flex justify">
           <div className="col-md-8 mt-5">
             <img src={setVehicle.image} alt="Vehicle" width="100%" />
           </div>
