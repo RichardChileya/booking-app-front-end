@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
+
 const VehiclesList = ({ item }) => {
   const path = `/vehicle-details/${item.id}`;
   return (
@@ -16,6 +17,7 @@ const VehiclesList = ({ item }) => {
         <span><img src="https://cdn-icons-png.flaticon.com/512/356/356076.png" alt="twitter icon" className="icons" /></span>
         <span><img src="https://cdn-icons-png.flaticon.com/512/1362/1362857.png" alt="instagram icon" className="icons" /></span>
       </div>
+
     </div>
   );
 };

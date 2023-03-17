@@ -8,6 +8,7 @@ import VehiclesList from './VehiclesList';
 const HomeComponent = () => {
   const carData = useSelector(vehicles);
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(listVehicles());
   }, []);
@@ -24,4 +25,5 @@ const HomeComponent = () => {
     </>
   );
 };
+
 export default HomeComponent;
