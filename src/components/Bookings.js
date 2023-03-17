@@ -57,20 +57,6 @@ const Bookings = () => {
     if (!isTokenSet) navigate('/login');
   };
 
-  console.log(currentUser);
-
-  // const handleSelectedVehicle = () => {
-  //   if (selectedVehicle) setVehicleId(selectedVehicle);
-  //   handleSelectedVehicle();
-  // };
-
-  // useEffect(() => {
-  //   handleSelectedVehicle();
-  //   navigateBooking();
-  //   checkAuthorizedUser();
-  //   listVehicles();
-  // }, [message, isTokenSet, selectedVehicle]);
-
   useEffect(() => {
     navigateBooking();
     checkAuthorizedUser();
