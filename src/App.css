@@ -17,7 +17,7 @@
 
 .header {
   padding: 2rem;
-  background-color: black;
+  background-color: #fff;
   color: #fff;
   min-height: 100vh;
   position: fixed;
@@ -59,6 +59,11 @@ a {
   align-items: center;
 }
 
+.car-details > a {
+  text-decoration: none;
+  color: #000;
+}
+
 .container {
   display: flex;
   justify-content: center;
@@ -78,4 +83,40 @@ a {
   height: 30px;
   gap: 4px;
   padding: 5px;
+}
+
+.main-content {
+  background-color: #eee;
+  min-height: 100vh;
+}
+
+.side-bar {
+  background-color: #fff;
+}
+
+.sidebar-menu > li > a {
+  text-decoration: none;
+  color: #000;
+}
+
+.sidebar-menu {
+  padding: 0;
+}
+
+.sidebar-menu > li:hover {
+  background-color: #000;
+}
+
+.sidebar-menu > li > a:hover {
+  color: #fff;
+}
+
+.detail-img {
+  width: 90%;
+}
+
+.details {
+  display: flex;
+  padding: 2rem;
+  justify-content: space-between;
 }
