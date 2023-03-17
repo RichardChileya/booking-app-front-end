@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 
 const VehiclesList = ({ item }) => {
   const path = `/vehicle-details/${item.id}`;
-  console.log(path);
   return (
     <div className="car-details col-md-4 col-sm-6">
       <Link to={path}>
@@ -23,9 +22,10 @@ const VehiclesList = ({ item }) => {
 
 VehiclesList.propTypes = {
   item: PropTypes.shape({
-    id: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
     image: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
+    available: PropTypes.bool.isRequired,
     description: PropTypes.string.isRequired,
   }).isRequired,
 };

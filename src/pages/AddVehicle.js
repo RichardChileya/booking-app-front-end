@@ -15,7 +15,6 @@ const AddVehicle = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(values);
   };
   return (
     <>
