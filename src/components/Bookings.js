@@ -2,72 +2,52 @@
 // import '~antd/dist/antd.css';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { Spinner, Button } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import dayjs from 'dayjs';
 import { DatePicker } from 'antd';
-import { allMessages, allStatus, bookVehicle } from '../redux/reducer/bookings/bookingSlice';
+import { useNavigate } from 'react-router-dom';
+import { bookVehicle } from '../redux/reducer/bookings/bookingSlice';
 import { authenticatedUser } from '../redux/reducer/user/userSlice';
-import userToken from '../redux/reducer/user/userToken';
-import { vehicle, vehicles, listVehicles } from '../redux/reducer/vehicles/vehicleSlice';
-import Alert from './Alert';
+import { vehicles, listVehicles } from '../redux/reducer/vehicles/vehicleSlice';
 
 const Bookings = () => {
   const [pickupDate, setPickupDate] = useState(null);
   const [returnDate, setReturnDate] = useState(null);
-  const currentUser = useSelector(authenticatedUser);
   const allVehicles = useSelector(vehicles);
-  const message = useSelector(allMessages);
-  const status = useSelector(allStatus);
-  const selectedVehicle = useSelector(vehicle).id;
-  const [vehicleId, setVehicleId] = useState(0);
+  const auth = useSelector(authenticatedUser);
+  const [vehicleId, setVehicleId] = useState('');
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const isTokenSet = userToken();
 
   const handleDateFormat = (date) => dayjs(date).format('YYYY/MM/DD');
 
-  const handleVehicleId = (vehicleId) => setVehicleId(+vehicleId);
+  const handleVehicleId = (event) => setVehicleId(event.target.value);
+
+  useEffect(() => {
+    dispatch(listVehicles());
+  }, []);
 
   const handleBooking = async () => {
-    const booking = {
+    const bookings = {
       pickup_date: pickupDate,
       return_date: returnDate,
       vehicle_id: vehicleId,
     };
 
-    const bookingObject = {
-      booking,
-      userId: currentUser.id,
-    };
+    const userId = auth.id;
 
-    const bookResponse = await dispatch(bookVehicle(bookingObject));
+    const bookResponse = await dispatch(bookVehicle({ userId, bookings }));
     if (bookResponse.payload.status === '00') {
       setPickupDate('');
       setReturnDate('');
       setVehicleId('');
+      navigate('/');
     }
   };
-
-  const navigateBooking = () => {
-    if (message === 'Vehicle successfuly booked') navigate('/bookings');
-  };
-
-  const checkAuthorizedUser = () => {
-    if (!isTokenSet) navigate('/login');
-  };
-
-  useEffect(() => {
-    navigateBooking();
-    checkAuthorizedUser();
-    dispatch(listVehicles());
-  }, [message, selectedVehicle]);
 
   document.title = 'Luxury Vehicles | Booking';
   return (
     <>
-      { status === 'failed' && <Alert message={message} />}
-      ;
       <div className="mt-4 mx-auto w-100 bg-light border-0 rounded-3 p-3" style={{ boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)' }}>
         <div className="mb-3 d-flex justify-content-center align-items-center text-light bg-dark opacity-50 bg-gradient" style={{ boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)' }}>
           <h3 className="text-uppercase text-light" style={{ letterSpacing: '0.1em; font-weight: 300' }}>
@@ -111,14 +91,14 @@ const Bookings = () => {
           >
             <option value="" disabled>Select a Vehicle</option>
             {allVehicles.map((vehicleId) => (
-              <option value={vehicleId.id} key={vehicleId}>
+              <option value={vehicleId.id} key={vehicleId.id}>
                 {vehicleId.name}
               </option>
             ))}
 
           </select>
         </div>
-        <div>
+        <div className="mt-3">
           <Button
             type="button"
             onClick={handleBooking}
@@ -126,12 +106,10 @@ const Bookings = () => {
             className="text-uppercase font-weight-bold py-3 btn btn-primary w-100"
             style={{ color: 'rgb(255, 193, 7)' }}
           >
-            {status === 'loading' ? <Spinner /> : <span>Add Vehicle</span>}
+            <span>Add Vehicle</span>
           </Button>
         </div>
-        ;
       </div>
-      ;
     </>
   );
 };

@@ -74,11 +74,11 @@ const bookingSlice = createSlice({
       .addCase(bookVehicle.fulfilled, (state, action) => ({
         ...state,
         bookings: [
-          ...(action.payload.status === 201 ? [action.payload.data] : []),
+          ...(action.payload.status === '00' ? [action.payload.data] : []),
           ...state.bookings,
         ],
         message: action.payload.message,
-        status: action.payload.status === 201 ? 'successful' : 'failed',
+        status: action.payload.status === '00' ? 'successful' : 'failed',
         error: action.payload.error,
       }))
       .addCase(bookVehicle.rejected, (state, action) => ({
