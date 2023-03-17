@@ -68,7 +68,7 @@ a {
   display: flex;
   justify-content: center;
   align-content: center;
-  flex-direction: column;
+  /* flex-direction: column; */
   padding-bottom: 5rem;
   text-align: center;
   width: 100vw;
