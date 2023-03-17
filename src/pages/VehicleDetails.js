@@ -26,22 +26,21 @@ const VehicleDetails = () => {
               <div className="img-div">
                 <img className="detail-img" src={setVehicle.image} alt="Vehicle" width="100%" />
               </div>
-              <div className="col-md-4">
-                <h2>{setVehicle.name}</h2>
-                <h4 className="">
+              <div className="detailed col-md-4">
+                <h2 className="vehicle-named">{setVehicle.name}</h2>
+                <h4 className="vehicle-detailed">
                   {' '}
                   Model:
                   {' '}
                   {setVehicle.model}
                 </h4>
-                <p className="">{setVehicle.description}</p>
-                <p>
+                <p className="vehicle-detail">
                   {' '}
                   Availablilty:
                   {' '}
                   {setVehicle.available ? 'Available' : 'Not Available' }
                 </p>
-                <p className="">
+                <p className="vehicle-detail">
                   {' '}
                   daily price $:
                   {' '}
@@ -53,7 +52,10 @@ const VehicleDetails = () => {
               </div>
             </div>
           </div>
-          <button className="btn btn-dark" type="button"><Link to="/">Back</Link></button>
+          <div className="btnss">
+            <button className="vehicle-but btn btn-dark" type="button"><Link to="/">Back</Link></button>
+            <button className="vehicle-buti btn btn-success" type="button"><Link to="/singlebooking">Book This Vehicle</Link></button>
+          </div>
         </>
       )
   );

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { includedVehicles } from '../redux/reducer/bookings/bookingSlice';
+// import { includedVehicles } from '../redux/reducer/bookings/bookingSlice';
 
 const BookingList = ({ item }) => (
   <div className="car-details col-md-4 col-sm-6">
