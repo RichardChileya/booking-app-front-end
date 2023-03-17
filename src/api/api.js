@@ -38,6 +38,14 @@ const addbooking = (booking) => ({
   body: JSON.stringify(booking),
 });
 
+const getBookings = () => ({
+  method: 'GET',
+  headers: {
+    'Content-Type': 'application/json',
+    Authorization: localStorage.getItem('token'),
+  },
+});
+
 const removeBooking = () => ({
   method: 'DELETE',
   headers: { Authorization: localStorage.getItem('token') },
@@ -168,6 +176,14 @@ const api = {
     });
     const booking = await response.json();
     return booking;
+  },
+
+  fetchBookings: async (id) => {
+    const response = await fetch(`${baseURL}/users/${id}/bookings`, {
+      ...getBookings(),
+    });
+    const bookings = await response.json();
+    return bookings;
   },
 
   deleteBooking: async (userId, bookingId) => {
