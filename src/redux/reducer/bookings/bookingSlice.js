@@ -8,6 +8,7 @@ const DELETE_BOOKING = 'DELETE_BOOKING';
 
 const initialState = {
   bookings: [],
+  vehicles: [],
   status: 'idle', // 'idle' | 'loading' | 'succeeded' | 'failed'
   message: '',
   error: null,
@@ -26,7 +27,9 @@ export const getBooking = createAsyncThunk(
   GET_BOOKINGS,
   async (userId) => {
     try {
-      return await api.fetchBookings(userId);
+      const booking = await api.fetchBookings(userId);
+      console.log(booking);
+      return booking;
     } catch (error) {
       return error.message;
     }
@@ -92,7 +95,8 @@ const bookingSlice = createSlice({
       }))
       .addCase(getBooking.fulfilled, (state, action) => ({
         ...state,
-        bookings: action.payload,
+        bookings: action.payload.bookings.data,
+        vehicles: action.payload.bookings.included,
         message: action.payload.message,
         status: 'successful',
       }))
@@ -124,6 +128,7 @@ const bookingSlice = createSlice({
 });
 
 export const vehiclesBookings = (state) => state.bookings.bookings;
+export const includedVehicles = (state) => state.bookings.vehicles;
 export const { resetBookingState, setMessageEmpty, setStatusIdle } = bookingSlice.actions;
 export const allStatus = (state) => state.bookings.status;
 export const allMessages = (state) => state.bookings.message;
