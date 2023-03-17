@@ -8,13 +8,17 @@ const AUTH_USER_DETAIL = 'AUTH_USER_DETAIL';
 
 const authUserSaved = localStorage.getItem('authUser');
 let authenticatedUserSaved;
-if (authUserSaved !== 'null' && authUserSaved !== 'undefined') {
+let authLoggedIn = false;
+if (authUserSaved !== 'null' && authUserSaved !== 'undefined' && authUserSaved !== null && authUserSaved !== undefined) {
   authenticatedUserSaved = JSON.parse(authUserSaved);
+  authLoggedIn = true;
 } else {
   authenticatedUserSaved = {};
+  authLoggedIn = false;
 }
 const initialState = {
   authenticatedUser: authenticatedUserSaved,
+  loggedin: authLoggedIn,
   status: 'idle', // 'idle' | 'loading' | 'succeeded' | 'failed' | 'unauthorized' | 'expired'//
   message: '',
   error: null,
@@ -75,6 +79,7 @@ const authSlice = createSlice({
         authenticatedUser: action.payload.data,
         message: action.payload.message,
         status: action.payload.status,
+        loggedin: true,
       }))
       .addCase(signUp.rejected, (state, action) => ({
         ...state,
@@ -90,6 +95,7 @@ const authSlice = createSlice({
         authenticatedUser: action.payload.user,
         message: action.payload.message,
         status: action.payload.status,
+        loggedin: true,
       }))
       .addCase(signIn.rejected, (state, action) => ({
         ...state,
@@ -105,6 +111,7 @@ const authSlice = createSlice({
         authenticatedUser: {},
         message: action.payload.message,
         status: action.payload.status,
+        loggedin: false,
       }))
       .addCase(signOut.rejected, (state, action) => ({
         ...state,
@@ -133,5 +140,6 @@ export const { setStatusIdle } = authSlice.actions;
 export const authenticatedUser = (state) => state.user.authenticatedUser;
 export const allStatus = (state) => state.user.status;
 export const allMessages = (state) => state.user.message;
+export const loggedin = (state) => state.user.loggedin;
 
 export default authSlice.reducer;

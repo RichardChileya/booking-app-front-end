@@ -3,7 +3,10 @@ const baseURL = 'http://localhost:3000/api';
 
 const setAuthToken = ({ headers }) => localStorage.setItem('token', headers.get('Authorization'));
 
-const unSetAuthToken = () => localStorage.removeItem('token');
+const unSetAuthToken = () => {
+  localStorage.removeItem('token');
+  localStorage.removeItem('authUser');
+};
 
 const register = (user) => ({
   method: 'POST',
@@ -159,9 +162,9 @@ const api = {
     return vehicle;
   },
 
-  bookVehicle: async (id) => {
+  bookVehicle: async (id, newBooking) => {
     const response = await fetch(`${baseURL}/users/${id}/bookings`, {
-      ...addbooking(),
+      ...addbooking(newBooking),
     });
     const booking = await response.json();
     return booking;

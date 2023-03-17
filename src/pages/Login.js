@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { signIn } from '../redux/reducer/user/userSlice';
-import userToken from '../redux/reducer/user/userToken';
+import { signIn, loggedin } from '../redux/reducer/user/userSlice';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Login = () => {
@@ -10,7 +9,7 @@ const Login = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const isTokenSet = userToken();
+  const isLoggedIn = useSelector(loggedin);
 
   const handleChange = (e) => {
     const {
@@ -21,9 +20,6 @@ const Login = () => {
 
   const handleSignIn = async (e) => {
     e.preventDefault();
-    // if (!user.email || !user.password) {
-    //   return alert('error');
-    // }
     const authLogin = await dispatch(signIn(user));
     console.log(authLogin);
     if (authLogin.payload.status === 'successful') {
@@ -33,8 +29,8 @@ const Login = () => {
   };
 
   useEffect(() => {
-    if (isTokenSet) navigate('/');
-  }, [isTokenSet]);
+    if (isLoggedIn) navigate('/');
+  }, [isLoggedIn]);
 
   document.title = 'Luxury Cars | Login';
 
