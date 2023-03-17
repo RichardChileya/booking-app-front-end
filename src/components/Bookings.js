@@ -45,10 +45,6 @@ const Bookings = () => {
     }
   };
 
-  // const navigateBooking = () => {
-  //   if (message === 'Vehicle successfuly booked') navigate('/bookings');
-  // };
-
   document.title = 'Luxury Vehicles | Booking';
   return (
     <>

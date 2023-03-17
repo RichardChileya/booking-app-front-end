@@ -16,6 +16,7 @@ const VehiclesList = ({ item }) => {
         <span><img src="https://cdn-icons-png.flaticon.com/512/356/356076.png" alt="twitter icon" className="icons" /></span>
         <span><img src="https://cdn-icons-png.flaticon.com/512/1362/1362857.png" alt="instagram icon" className="icons" /></span>
       </div>
+
     </div>
   );
 };
@@ -25,6 +26,7 @@ VehiclesList.propTypes = {
     id: PropTypes.number.isRequired,
     image: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
+    available: PropTypes.bool.isRequired,
     description: PropTypes.string.isRequired,
   }).isRequired,
 };
