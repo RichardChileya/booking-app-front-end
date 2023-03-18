@@ -41,7 +41,7 @@ const Bookings = () => {
       setPickupDate('');
       setReturnDate('');
       setVehicleId('');
-      navigate('/');
+      navigate('/reservation');
     }
   };
 

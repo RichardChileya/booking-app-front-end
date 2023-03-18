@@ -28,7 +28,6 @@ export const getBooking = createAsyncThunk(
   async (userId) => {
     try {
       const booking = await api.fetchBookings(userId);
-      console.log(booking);
       return booking;
     } catch (error) {
       return error.message;

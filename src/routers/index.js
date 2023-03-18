@@ -14,14 +14,14 @@ import ProtectedRoute from '../components/ProtectedRoute';
 const AppRouter = () => (
   <Routes>
     <Route path="/" element={<Home />} />
+    <Route path="vehicle-details/:id" element={<VehicleDetails />} />
     <Route element={<ProtectedRoute />}>
       <Route path="/booking" element={<Booking />} />
-      <Route path="/singlebooking" element={<SingleBooking />} />
-      <Route path="vehicle-details/:id" element={<VehicleDetails />} />
+      <Route path="/singlebooking/:id" element={<SingleBooking />} />
       <Route path="/reservation" element={<Reservation />} />
-      <Route path="/add-vehicle" element={<AddVehicle />} />
-      <Route path="/delete-vehicle" element={<DeleteVehicle />} />
     </Route>
+    <Route path="/add-vehicle" element={<AddVehicle />} />
+    <Route path="/delete-vehicle" element={<DeleteVehicle />} />
     <Route path="/login" element={<Login />} />
     <Route path="/register" element={<Register />} />
   </Routes>
