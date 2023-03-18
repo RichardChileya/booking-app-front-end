@@ -35,12 +35,12 @@ const Login = () => {
   document.title = 'Luxury Cars | Login';
 
   return (
-    <div className="container mt-5">
+    <div className="container-fluid mt-5">
       <div className="row justify-content-center">
         <div className="col-md-6">
           <div className="card">
-            <div className="card-header">
-              Login
+            <div className="card-header text-center">
+              <h3>Login</h3>
             </div>
             <div className="card-body">
               <form onSubmit={handleSignIn}>

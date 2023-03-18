@@ -55,13 +55,6 @@ a {
   text-decoration: none;
 }
 
-.car-info {
-  display: flex;
-  gap: 4rem;
-  margin: 2rem;
-  padding: 1rem;
-}
-
 .car-details {
   display: flex;
   flex-direction: column;
@@ -110,17 +103,19 @@ a {
 .sidebar-menu > li > a {
   text-decoration: none;
   color: #000;
+  width: 100%;
+  padding: 10px;
+  padding-right: 25px;
+  font-size: 15px;
 }
 
 .sidebar-menu {
   padding: 0;
-}
-
-.sidebar-menu > li:hover {
-  background-color: #000;
+  padding-left: 15px;
 }
 
 .sidebar-menu > li > a:hover {
+  background-color: #97bf0f;
   color: #fff;
 }
 
@@ -175,4 +170,10 @@ a {
 
 .vehicle-buti a{
   color: #fff;
+}
+
+@media (max-width: 900px) {
+  .sidebar-menu > li > a {
+    font-size: 12px;
+  }
 }

@@ -11,12 +11,11 @@ const Home = () => {
     <div>
       {logo.map((logoData) => (
         <div key={logoData.id} className="booking-header">
-          <h1>
-            Welecome to
+          <h1 className="pt-5">
+            Welcome to
             {' '}
             {logoData.name}
           </h1>
-          <img src={logoData.image} alt="" />
         </div>
 
       ))}

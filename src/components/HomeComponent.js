@@ -17,7 +17,7 @@ const HomeComponent = () => {
   }, []);
   return (
     <>
-      <h2 className="container">Please select a car </h2>
+      <h6 className="container">Please select your preferred vehicle </h6>
       <div className="container-fluid group">
         <div className="car-info">
           <OwlCarousel className="owl-theme" items={3} margin={20} loop autoplay>
