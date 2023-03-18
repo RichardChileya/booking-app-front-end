@@ -14,16 +14,16 @@ const Header = () => {
     dispatch(signOut());
   };
   return (
-    <header className="header">
-      <h1 className="text-black pb-5">Luxury Cars </h1>
+    <header className="col-md-2 header">
+      <img src="https://t4.ftcdn.net/jpg/03/58/16/05/360_F_358160523_d0Tc3knJ0j1RBobgWCjM4BZUo9gx33ZX.jpg" alt="Logo" height="120" />
       <nav className="nav-bar">
-        <ul className="links d-flex flex-column sidebar-menu">
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/booking">Bookings</Link></li>
-          <li><Link to="/reservation">Reservations</Link></li>
+        <ul className="links d-flex flex-column sidebar-menu mt-3">
+          <li><Link to="/">HOME</Link></li>
+          <li><Link to="/booking">BOOKINGS</Link></li>
+          <li><Link to="/reservation">RESERVATIONS</Link></li>
           {
-            isLoggedIn ? <button type="button" className="btn btn-danger" onClick={handleLogout}>Logout</button>
-              : <Link className="btn btn-primary" to="/login">Login</Link>
+            isLoggedIn ? <button type="button" className="btn btn-danger mt-5" onClick={handleLogout}>Logout</button>
+              : <Link className="btn btn-primary mt-5" to="/login">Login</Link>
           }
 
           <li />

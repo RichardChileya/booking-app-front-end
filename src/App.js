@@ -6,10 +6,8 @@ import Header from './components/Header';
 function App() {
   return (
     <div className="row">
-      <div className="col-md-3 side-bar">
-        <Header />
-      </div>
-      <div className="col-md-9 offset-md-3 main-content">
+      <Header />
+      <div className="col-md-10 offset-md-2 main-content">
         <AppRouter />
       </div>
     </div>
