@@ -16,6 +16,7 @@
     "react-bootstrap": "^2.7.2",
     "react-datepicker": "^4.10.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^4.8.0",
     "react-multi-carousel": "^2.8.2",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.8.2",
@@ -64,6 +65,7 @@
     "stylelint": "^13.13.1",
     "stylelint-config-standard": "^21.0.0",
     "stylelint-csstree-validator": "^1.9.0",
-    "stylelint-scss": "^3.21.0"
+    "stylelint-scss": "^3.21.0",
+    "tailwindcss": "^3.2.7"
   }
 }

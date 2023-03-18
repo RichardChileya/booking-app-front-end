@@ -71,6 +71,7 @@ a {
   /* flex-direction: column; */
   padding-bottom: 5rem;
   text-align: center;
+  overflow: hidden;
   width: 100vw;
 }
 
