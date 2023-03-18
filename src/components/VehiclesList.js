@@ -5,12 +5,13 @@ import { Link } from 'react-router-dom';
 const VehiclesList = ({ item }) => {
   const path = `/vehicle-details/${item.id}`;
   return (
-    <div className="car-details col-md-4 col-sm-6">
+    <div className="text-center car-image-container">
       <Link to={path}>
         <img src={item.image} alt=" vehicles" className="car-imgs" />
-        <h2 className="vehicle-name">{item.name}</h2>
+        <h4 className="vehicle-name">{item.name}</h4>
       </Link>
-      <p>{item.description}</p>
+      <div className="py-3">*************************</div>
+      <p>{item.description.length > 100 ? `${item.description.substring(0, 100)}...` : item.description}</p>
       <div className="icons-container">
         <span><img src="https://cdn-icons-png.flaticon.com/512/4628/4628653.png" alt="fb icon" className="icons" /></span>
         <span><img src="https://cdn-icons-png.flaticon.com/512/356/356076.png" alt="twitter icon" className="icons" /></span>

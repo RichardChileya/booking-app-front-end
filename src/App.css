@@ -41,9 +41,18 @@ a {
 
 .car-imgs {
   width: 50%;
-  height: auto;
+  height: 200px;
   border-radius: 70%;
   padding: 5px;
+}
+
+.vehicle-name {
+  padding: 20px 0 0 0;
+  color: #000;
+}
+
+.car-image-container a {
+  text-decoration: none;
 }
 
 .car-info {
@@ -68,14 +77,18 @@ a {
   display: flex;
   justify-content: center;
   align-content: center;
-  flex-direction: column;
+  /* flex-direction: column; */
   padding-bottom: 5rem;
   text-align: center;
+  overflow: hidden;
   width: 100vw;
 }
 
 .icons-container {
+  width: 100%;
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .icons {
