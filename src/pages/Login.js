@@ -44,9 +44,9 @@ const Login = () => {
             </div>
             <div className="card-body">
               <form onSubmit={handleSignIn}>
-                <div className="form-group">
+                <div className="form-group mb-3">
 
-                  <label htmlFor="email">
+                  <label htmlFor="email" style={{ width: '100%' }}>
                     Email address
                     <input
                       name="email"
@@ -58,8 +58,8 @@ const Login = () => {
 
                   </label>
                 </div>
-                <div className="form-group">
-                  <label htmlFor="password" className="form-label">
+                <div className="form-group mb-3">
+                  <label htmlFor="password" className="form-label" style={{ width: '100%' }}>
                     Password
                     <input
                       type="password"

@@ -111,8 +111,8 @@ const Register = () => {
                     errors, touched,
                   }) => (
                     <Form>
-                      <div className="form-group">
-                        <label htmlFor="nameInput" className="form-label">
+                      <div className="form-group mb-3">
+                        <label htmlFor="nameInput" className="form-label" style={{ width: '100%' }}>
                           Name
                           <input
                             type="text"
@@ -126,8 +126,8 @@ const Register = () => {
                         </label>
                         {errors.name && touched.name && <div className="form-error">{errors.name}</div>}
                       </div>
-                      <div className="form-group">
-                        <label htmlFor="emailInput" className="form-label">
+                      <div className="form-group mb-3">
+                        <label htmlFor="emailInput" className="form-label" style={{ width: '100%' }}>
                           Email address
                           <input
                             type="email"
@@ -141,8 +141,8 @@ const Register = () => {
                         </label>
                         {errors.email && touched.email && <div className="form-error">{errors.email}</div>}
                       </div>
-                      <div className="form-group">
-                        <label htmlFor="passwordInput" className="form-label">
+                      <div className="form-group mb-3">
+                        <label htmlFor="passwordInput" className="form-label" style={{ width: '100%' }}>
                           Password
                           <input
                             type="password"
@@ -156,8 +156,8 @@ const Register = () => {
                         </label>
                         {errors.password && touched.password && <div className="form-error">{errors.password}</div>}
                       </div>
-                      <div className="form-group">
-                        <label htmlFor="confirmPasswordInput" className="form-label">
+                      <div className="form-group mb-3">
+                        <label htmlFor="confirmPasswordInput" className="form-label" style={{ width: '100%' }}>
                           Confirm password
                           <input
                             type="password"
